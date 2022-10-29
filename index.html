@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='UTF-8'>
-  <meta name='keywords' content='HTML,CSS,XML,JavaScript'>
+  <meta name='keywords' content='Page Loader'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='author' content='Vinay'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -15,6 +15,9 @@
 	body
 	{
 		background:#415063;
+		height:100%;
+		width:100%;
+		overflow:hidden;
 	}
 	#loader section
 	{
@@ -34,7 +37,7 @@
 		position:absolute;
 		left:100%;
 		animation:pacman 8s 2.5s linear infinite;
-		opacity:0;
+		visibility:hidden;
 		image-rendering: smooth;
 	}
 	#loader section .ghost
@@ -48,77 +51,71 @@
 		content: attr(data-title);
 		font-weight:900;
 		position:absolute;
-		width:100%;
+		width:0%;
 		height:50px;
 		animation:load 8s 2.5s linear infinite;
 		overflow:hidden;
-		opacity:0;
 	}
 	@keyframes load
 	{
 		0%
 		{
-
 			width:0;
-			opacity:1;
 		}
 		50%
 		{
 			width:100%;
-			opacity:1;
 		}
 		51%
 		{
 			width:100%;
-			opacity:1;
 		}
 		100%
 		{
 			width:0;
-			opacity:1;
 		}
 		
 	}
 	@keyframes pacman
 	{
+		0% 
+		{
+			visibility:hidden;
+		}
+		50%
+		{
+			visibility:hidden;
+		}
 		51%
 		{
-			opacity:1;
+			visibility:visible;
 			left:100%;
 		}
 		100%
 		{
-			opacity:1;
+			visibility:visible;
 			left:0;
-		}
-		0% 
-		{
-			opacity: 0;
-		}
-		50%
-		{
-			opacity: 0;
 		}
 	}
 	@keyframes ghost
 	{
-		51%
-		{
-			opacity:0;
-		}
-		100%
-		{
-			opacity:0;
-		}
 		0% 
 		{
 			left:0%;
-			opacity: 1;
+			visibility:visible;
 		}
 		50%
 		{
 			left:100%;
-			opacity: 1;
+			visibility:visible;
+		}
+		51%
+		{
+			visibility:hidden;
+		}
+		100%
+		{
+			visibility:hidden;
 		}
 	}
 	@keyframes fall
@@ -142,11 +139,16 @@
 			height:30px;
 		}
 	}
-	@media only screen and (max-width: 780px)
+	@media only screen and (max-width: 420px)
 	{
+		
 		#loader section
 		{
-			width:250px;
+			width:80%;
+			position:absolute;
+			top:40%;
+			left:7%;
+			transform:translate(0%,0%);
 		}
 	}
 
@@ -159,16 +161,5 @@
 			<img class='ghost' src='pacman-ghost.gif' style='width:30px;height:30px;'>
 		</section>
 	</div>
-	<!--<div id='content' style="display:none;">
-	</div>
-	<script>
-		var loader=document.getElementById('loader');
-		var content=document.getElementById('content');
-		window.addEventListener('load',function(){
-		loader.style.display='none';
-		content.style.display='block';
-		})
-	</script>
-	-->
 </body>
 </html>
